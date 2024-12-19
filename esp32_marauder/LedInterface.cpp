@@ -63,7 +63,7 @@ void LedInterface::setMode(LedMode new_mode) {
   this->current_mode = new_mode;
 }
 
-uint8_t LedInterface::getMode() {
+LedMode LedInterface::getMode() {
   return this->current_mode;
 }
 
