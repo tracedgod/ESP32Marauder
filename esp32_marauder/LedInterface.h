@@ -55,7 +55,7 @@ class LedInterface {
 
     void setMode(LedMode mode);
     void setColor(int r, int g, int b);
-    uint8_t getMode();
+    LedMode getMode();
     
   
 };
