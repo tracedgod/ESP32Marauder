@@ -10,6 +10,7 @@
 
 #ifdef HAS_NEOPIXEL_LED
 #include <Adafruit_NeoPixel.h>
+#define Pixels 1
 #endif
 
 enum class LedMode : uint8_t {
