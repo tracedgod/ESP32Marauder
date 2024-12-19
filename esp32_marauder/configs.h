@@ -57,7 +57,6 @@
 
  //// BOARD FEATURES
   #ifdef MARAUDER_M5STICKC
-    //#define FLIPPER_ZERO_HAT
     #define HAS_BATTERY
     #define HAS_BT
     #define HAS_BUTTONS
@@ -72,7 +71,6 @@
   #endif
 
   #ifdef MARAUDER_MINI
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     #define HAS_BT
     #define HAS_BUTTONS
@@ -87,7 +85,6 @@
   #endif
 
   #ifdef MARAUDER_V7
-    //#define FLIPPER_ZERO_HAT
     #define HAS_BATTERY
     #define HAS_BT
     #define HAS_BT_REMOTE
@@ -103,7 +100,6 @@
   #endif
 
   #ifdef MARAUDER_REV_FEATHER
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     //#define HAS_BT
     #define HAS_BUTTONS
@@ -118,7 +114,6 @@
   #endif
 
   #ifdef MARAUDER_V4
-    //#define FLIPPER_ZERO_HAT
     #define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -133,7 +128,6 @@
   #endif
 
   #if defined(MARAUDER_V6) || defined(MARAUDER_V6_1)
-    //#define FLIPPER_ZERO_HAT
     #define HAS_BATTERY
     #define HAS_BT
     #define HAS_BT_REMOTE
@@ -149,7 +143,6 @@
   #endif
 
   #ifdef MARAUDER_KIT
-    //#define FLIPPER_ZERO_HAT
     #define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -164,7 +157,6 @@
   #endif
 
   #ifdef GENERIC_ESP32
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -177,7 +169,6 @@
   #endif
 
   #ifdef MARAUDER_FLIPPER
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     //#define HAS_BT
     //#define HAS_BUTTONS
@@ -191,7 +182,6 @@
   #endif
 
   #ifdef ESP32_LDDB
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -205,7 +195,6 @@
   #endif
 
   #ifdef MARAUDER_DEV_BOARD_PRO
-    //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -219,7 +208,6 @@
   #endif
 
   #ifdef XIAO_ESP32_S3
-    #define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
     #define HAS_BT
     //#define HAS_BUTTONS
@@ -1052,9 +1040,8 @@
   #endif
   //// END MEMORY LOWER LIMIT STUFF
 
-  //// NEOPIXEL STUFF  
+  //// LED STUFF  
   #ifdef HAS_NEOPIXEL_LED
-    
     #if defined(ESP32_LDDB)
       #define PIN 17
     #elif defined(MARAUDER_DEV_BOARD_PRO)
@@ -1064,9 +1051,16 @@
     #else
       #define PIN 25
     #endif
-  
+  #elif defined(MARAUDER_FLIPPER)
+    #define FLIPPER_LED_B_PIN 4
+    #define FLIPPER_LED_G_PIN 5
+    #define FLIPPER_LED_R_PIN 6
+  #elif defined(XIAO_ESP32_S3)
+    #define XIAO_LED_PIN 21
+  #elif defined(MARAUDER_M5STICKC)
+    #define STICKC_LED_PIN 10
   #endif
-  //// END NEOPIXEL STUFF
+  //// END LED STUFF
 
   //// EVIL PORTAL STUFF
   #ifdef MARAUDER_M5STICKC

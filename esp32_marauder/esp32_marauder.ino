@@ -34,15 +34,7 @@ https://www.online-utility.org/image/convert/to/XBM
 #endif
 #include "Buffer.h"
 
-#ifdef MARAUDER_FLIPPER
-  #include "flipperLED.h"
-#elif defined(XIAO_ESP32_S3)
-  #include "xiaoLED.h"
-#elif defined(MARAUDER_M5STICKC)
-  #include "stickcLED.h"
-#elif defined(HAS_NEOPIXEL_LED)
-  #include "LedInterface.h"
-#endif
+#include "LedInterface.h"
 
 #include "settings.h"
 #include "CommandLine.h"
@@ -105,15 +97,7 @@ CommandLine cli_obj;
   AXP192 axp192_obj;
 #endif
 
-#ifdef MARAUDER_FLIPPER
-  flipperLED flipper_led;
-#elif defined(XIAO_ESP32_S3)
-  xiaoLED xiao_led;
-#elif defined(MARAUDER_M5STICKC)
-  stickcLED stickc_led;
-#else
-  LedInterface led_obj;
-#endif
+LedInterface led_obj;
 
 const String PROGMEM version_number = MARAUDER_VERSION;
 
@@ -290,15 +274,7 @@ void setup()
   #endif
 
   // Do some LED stuff
-  #ifdef MARAUDER_FLIPPER
-    flipper_led.RunSetup();
-  #elif defined(XIAO_ESP32_S3)
-    xiao_led.RunSetup();
-  #elif defined(MARAUDER_M5STICKC)
-    stickc_led.RunSetup();
-  #else
-    led_obj.RunSetup();
-  #endif
+  led_obj.RunSetup();
 
   #ifdef HAS_SCREEN
     //display_obj.tft.println(F(text_table0[7]));
@@ -400,15 +376,7 @@ void loop()
     #endif
     //cli_obj.main(currentTime);
   }
-  #ifdef MARAUDER_FLIPPER
-    flipper_led.main();
-  #elif defined(XIAO_ESP32_S3)
-    xiao_led.main();
-  #elif defined(MARAUDER_M5STICKC)
-    stickc_led.main();
-  #else
-    led_obj.main(currentTime);
-  #endif
+  led_obj.main(currentTime);
 
   //if (wifi_scan_obj.currentScanMode == OTA_UPDATE)
   //  web_obj.main();
@@ -424,13 +392,7 @@ void loop()
       menu_function_obj.main(currentTime);
     #endif
 
-    #ifdef MARAUDER_FLIPPER
-      flipper_led.main();
-    #elif defined(XIAO_ESP32_S3)
-      xiao_led.main();
-    #else
-      led_obj.main(currentTime);
-    #endif
+    led_obj.main(currentTime);
     
     //cli_obj.main(currentTime);
     delay(1);

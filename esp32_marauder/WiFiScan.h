@@ -37,15 +37,7 @@
 #endif
 #include "settings.h"
 #include "Assets.h"
-#ifdef MARAUDER_FLIPPER
-  #include "flipperLED.h"
-#elif defined(XIAO_ESP32_S3)
-  #include "xiaoLED.h"
-#elif defined(MARAUDER_M5STICKC)
-  #include "stickcLED.h"
-#else
-  #include "LedInterface.h"
-#endif
+#include "LedInterface.h"
 
 #define bad_list_length 3
 
@@ -119,15 +111,8 @@ extern Buffer buffer_obj;
   extern BatteryInterface battery_obj;
 #endif
 extern Settings settings_obj;
-#ifdef MARAUDER_FLIPPER
-  extern flipperLED flipper_led;
-#elif defined(XIAO_ESP32_S3)
-  extern xiaoLED xiao_led;
-#elif defined(MARAUDER_M5STICKC)
-  extern stickcLED stickc_led;
-#else
-  extern LedInterface led_obj;
-#endif
+
+extern LedInterface led_obj;
 
 esp_err_t esp_wifi_80211_tx(wifi_interface_t ifx, const void *buffer, int len, bool en_sys_seq);
 
